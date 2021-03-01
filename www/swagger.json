@@ -1,0 +1,68 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "the111wewewqeqweqweqweqweqweqweqweqweq purpose of this application is to provide an application\nthat is using plain go code to define an API",
+    "title": "Dummy API",
+    "version": "1.0"
+  },
+  "host": "localhost:9090",
+  "basePath": "/api/v1",
+  "paths": {
+    "/dummies": {
+      "get": {
+        "description": "Return a dummy list from the database",
+        "tags": [
+          "Dummy"
+        ],
+        "operationId": "dummyList",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/dummyListResponse"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "TDummy": {
+      "description": "TDummy defines the type of a dummy structure",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "maxLength": 100,
+          "x-go-name": "Description"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "x-go-name": "ID"
+        }
+      },
+      "x-go-package": "_/home/hsk/go/projects/pBE/pBEServer/data"
+    }
+  },
+  "responses": {
+    "dummyListResponse": {
+      "description": "A dummy list",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/TDummy"
+        }
+      }
+    }
+  }
+}
